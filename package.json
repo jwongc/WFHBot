@@ -4,6 +4,7 @@
   "description": "Bot to track WFH on slack",
   "main": "index.js",
   "scripts": {
+	"start": "wfhbot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
