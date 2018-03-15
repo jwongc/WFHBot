@@ -1,0 +1,22 @@
+{
+  "name": "wfhbot",
+  "version": "1.0.0",
+  "description": "Bot to track WFH on slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwongc/WFHBot.git"
+  },
+  "author": "Jeffrey Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwongc/WFHBot/issues"
+  },
+  "homepage": "https://github.com/jwongc/WFHBot#readme",
+  "dependencies": {
+    "@slack/client": "^4.0.1"
+  }
+}
