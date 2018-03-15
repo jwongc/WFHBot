@@ -1,10 +1,11 @@
 const { RTMClient, WebClient } = require('@slack/client');
 
-const bot_token = 'xoxb-330103983009-IqyyUITJ7pevYnN9GBeGO6SL';
+const bot_token = 'Placeholder for the actual token lol';
 const rtm       = new RTMClient(bot_token);
 const web       = new WebClient(bot_token);
 
 const robotName   = 'wfhbot';
+const channel = 'C9QKB61MG';
 
 let users = [];
 let wfhUsers = [];
@@ -32,18 +33,18 @@ web.users.list((err, data) => {
 
 rtm.start();
 
-rtm.on('message', function handleRtmMessage(message) {
-    if (message.text) {
+rtm.on('message', (message) => {
+    if (message.text && message.channel === channel) {
         const userName = getUsernameFromId(message.user);
         if (userName !== robotName) {
             if (message.text.trim().toLowerCase() === '!wfh help') {
-                rtm.sendMessage('Hey ' + userName + '! To add yourself to the WFH list, simply enter !wfh. To get the WFH list, enter !wfhlist', message.channel);
+                rtm.sendMessage('Hey <@' + message.user + '>! To add yourself to the WFH list, simply enter !wfh. To get the WFH list, enter !wfhlist', message.channel);
             }
             if (message.text.trim().toLowerCase() === '!wfhlist') {
                 var returnMessage = 'Users that are working from home: ';
                 var userCount = wfhUsers.length;
-                wfhUsers.forEach(function(userName, index) {
-                    returnMessage = returnMessage + userName;
+                wfhUsers.forEach(function(user, index) {
+                    returnMessage = returnMessage + '<@' + message.user + '>';
                     if (index !== userCount - 1) {
                         returnMessage = returnMessage + ", ";
                     }
@@ -51,8 +52,8 @@ rtm.on('message', function handleRtmMessage(message) {
                 rtm.sendMessage(returnMessage, message.channel);
             }
             if (message.text.toLowerCase().trim().toLowerCase() === ('!wfh')) {
-                wfhUsers.push(userName);
-                rtm.sendMessage('Added ' + userName + ' to WFH list.', message.channel);
+                wfhUsers.push(message.user);
+                rtm.sendMessage('Added <@' + message.user + '> to WFH list.', message.channel);
             }
         }
     }
