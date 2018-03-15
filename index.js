@@ -2,7 +2,7 @@ const RtmClient  = require('@slack/client').RtmClient;
 const WebClient  = require('@slack/client').WebClient;
 const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 
-const bot_token = 'xoxb-330103983009-2XQLtvgz9roX3Idwnzbjv2CK';
+const bot_token = 'SLACKTOKEN';
 const rtm       = new RtmClient(bot_token);
 const web       = new WebClient(bot_token);
 
